@@ -21,9 +21,10 @@ if (charging) {
 	draw_sprite_ext(spr_charge, anim_charge_frame, x, y, 1, 1, image_angle, c_white, ship_opacity);
 	if (anim_step % anim_charge_speed == 0) {
 		anim_charge_frame += 1;
-		repeat (irandom_range(0, 4)) {
-			instance_create_layer(x, y, "Instances", obj_debris);
-		}
+		//repeat (irandom_range(0, 4)) {
+		//	instance_create_layer(x, y, "Instances", obj_debris);
+		//}
+		obj_game.create_debris(x, y, irandom_range(0, 4));
 	}
 	if (anim_charge_frame > 127) {
 		anim_charge_frame = 0;

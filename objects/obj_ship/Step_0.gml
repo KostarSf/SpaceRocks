@@ -3,7 +3,7 @@ if (!global.gamePaused) {
 // Controlls
 
 if (global.mouseWasMoved) {
-	image_angle = point_direction(x, y, mouse_x, mouse_y)
+	image_angle = point_direction(x, y, mouse_x, mouse_y);
 }
 
 if (keyboard_check(vk_left)) {
@@ -12,9 +12,16 @@ if (keyboard_check(vk_left)) {
 	image_angle -= 5;
 } 
 
+direction_difference = angle_difference(image_angle, direction);
+
 speed = current_speed;
 
 if (keyboard_check(vk_up) || mouse_check_button(mb_right)) {
+	if (mouse_check_button(mb_right)) {
+		image_angle = point_direction(x, y, mouse_x, mouse_y);
+		direction_difference = angle_difference(image_angle, direction);
+	}
+	
 	if (!accelerating) {
 		accelerating = true;
 		
@@ -23,12 +30,30 @@ if (keyboard_check(vk_up) || mouse_check_button(mb_right)) {
 			audio_play_sound(snd_engine, 0, true);
 		}
 		
+		var sparkle_count = 10 - obj_game.linear_interpolate_value(clamp(speed, 0, 3), 0, 3, 0, 8);
+		var _x = x + lengthdir_x(10, image_angle + 180);
+		var _y = y + lengthdir_y(10, image_angle + 180);
+		obj_game.create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 45, 2, 0.05);
 	}
 	
 	if (speed <= 1) {
 		motion_add(image_angle, 0.1);
 	} else {
 		motion_add(image_angle, 0.05);
+	}
+	
+	var sparkle_count = 10 - obj_game.linear_interpolate_value(speed, 0, 2, 0, 10);
+	var _x = x + lengthdir_x(10, image_angle + 180);
+	var _y = y + lengthdir_y(10, image_angle + 180);
+	obj_game.create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 20, 2.5, 0.05);
+	
+	if (abs(direction_difference) > 100) {
+		var motion_count = obj_game.linear_interpolate_value(abs(direction_difference), 101, 180, 0, 0.1);
+		motion_add(image_angle, motion_count);
+		var sparkle_count = obj_game.linear_interpolate_value(abs(direction_difference), 101, 180, 0, 5);
+		var _x = x + lengthdir_x(10, image_angle + 180);
+		var _y = y + lengthdir_y(10, image_angle + 180);
+		obj_game.create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 45, 2, 0.01);
 	}
 } else {
 	accelerating = false;
@@ -56,7 +81,7 @@ if (speed < 0) {
 
 current_speed = speed;
 
-// Behaviour
+// Map Border Behaviour
 
 move_wrap(true, true, sprite_width / 2);
 
@@ -80,7 +105,9 @@ if (x < force_margin) {
 if (keyboard_check_pressed(ord("Z")) || mouse_check_button_pressed(mb_left)) {
 	if (global.bullets > 0) {
 		audio_play_sound(snd_shoot, 1, false);
-		var bullet = instance_create_layer(x, y, "Instances", obj_bullet);
+		var _x = x + lengthdir_x(12, image_angle);
+		var _y = y + lengthdir_y(12, image_angle);
+		var bullet = instance_create_layer(_x, _y, "Instances", obj_bullet);
 		bullet.image_angle = image_angle;
 		bullet.direction = image_angle;
 		bullet.move_speed = speed + 3;

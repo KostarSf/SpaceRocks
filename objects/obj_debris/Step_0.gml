@@ -1,7 +1,8 @@
 if (!global.gamePaused) {
 	speed = move_speed;
+	image_angle = direction;
 	
-	image_alpha -= 0.01;
+	image_alpha -= fade_speed;
 
 	if (image_alpha <= 0) {
 		instance_destroy();

@@ -1,6 +1,6 @@
 /// @description Идеи для игры
 
-game_version = "v1.0.3";
+game_version = "v1.0.4";
 
 function start_properties() {
 	score = 0;
@@ -10,6 +10,8 @@ function start_properties() {
 	global.bullets = 10;
 	global.shipX = 0;
 	global.shipY = 0;
+	global.maxBullets = 999;
+	global.god_mode = false;
 }
 
 start_properties();
@@ -40,6 +42,27 @@ bg_offset = 0;
 draw_dev_gui = false;
 
 // Functions
+
+function create_debris(x, y, count) {
+	repeat (count) {
+		instance_create_layer(x, y, "Instances", obj_debris);
+	}
+}
+
+function create_debris_ext(x, y, count, angle, spread, speed, fade_speed) {
+	repeat (count) {
+		var debr = instance_create_layer(x, y, "Instances", obj_debris);
+		debr.set_move_speed(speed);
+		debr.fade_speed = fade_speed;
+		
+		spread = clamp(spread, 0, 359) / 2;
+		
+		var deg1 = angle - spread;
+		var deg2 = angle + spread;
+		
+		debr.direction = irandom_range(deg1, deg2);
+	}
+}
 
 function item_delay_add(delay) {
 	item_delay += delay;

@@ -21,9 +21,10 @@ if (!picked_up) {
 			break;
 	}
 
-	repeat (10) {
-		instance_create_layer(x, y, "Instances", obj_debris);
-	}
+	//repeat (10) {
+	//	instance_create_layer(x, y, "Instances", obj_debris);
+	//}
+	obj_game.create_debris(x, y, 10);
 	
 	sprite_index = spr_item_pickup;
 }

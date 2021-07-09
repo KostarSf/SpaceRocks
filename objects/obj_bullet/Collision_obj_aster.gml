@@ -22,9 +22,10 @@ with (other) {
 		global.bullets += 1;
 	}
 	
-	repeat (10) {
-		instance_create_layer(x, y, "Instances", obj_debris);
-	}
+	obj_game.create_debris(x, y, 10);
+	//repeat (10) {
+	//	instance_create_layer(x, y, "Instances", obj_debris);
+	//}
 	
 	instance_create_layer(x, y, "Instances", obj_blow);
 }

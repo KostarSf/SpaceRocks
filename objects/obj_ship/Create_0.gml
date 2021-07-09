@@ -8,6 +8,7 @@ second_life = true;
 
 ship_opacity = 1;
 current_speed = speed;
+direction_difference = 0;
 
 playing_engine_sound = false;
 

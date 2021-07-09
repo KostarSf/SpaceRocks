@@ -1,4 +1,4 @@
-if (!invincible) {
+if (!invincible && !global.god_mode) {
 	if (second_life && other.sprite_index == spr_aster_small) {
 		second_life = false;
 		
@@ -8,9 +8,10 @@ if (!invincible) {
 		with (other) {
 			instance_destroy();
 		
-			repeat (10) {
-				instance_create_layer(x, y, "Instances", obj_debris);
-			}
+			//repeat (10) {
+			//	instance_create_layer(x, y, "Instances", obj_debris);
+			//}
+			obj_game.create_debris(x, y, 10);
 			
 			instance_create_layer(x, y, "Instances", obj_blow);
 		}

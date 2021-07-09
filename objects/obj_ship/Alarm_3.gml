@@ -1,5 +1,6 @@
 /// @description Charge Blow
 
+audio_stop_sound(snd_charge);
 audio_play_sound(snd_boom, 2, false);
 global.shoots += 50;
 charging = false;

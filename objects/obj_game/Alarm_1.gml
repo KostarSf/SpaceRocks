@@ -5,9 +5,10 @@ if (room != rm_game) {
 }
 
 audio_play_sound(snd_revive, 2, false);
-repeat (10) {
-	instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_debris);
-}
+//repeat (10) {
+//	instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_debris);
+//}
+obj_game.create_debris(room_width / 2, room_height / 2, 10);
 
 var ship = instance_create_layer(room_width / 2, room_height / 2, "Instances", obj_ship);
 ship.image_angle = 90;

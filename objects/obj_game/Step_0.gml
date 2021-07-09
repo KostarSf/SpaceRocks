@@ -29,6 +29,8 @@ if (room == rm_game) {
 		alarm[1] = 60;
 	}
 	
+	global.bullets = clamp(global.bullets, 0, global.maxBullets);
+	
 	if (score >= 9999) {
 		room_goto(rm_win);
 	}
@@ -54,4 +56,17 @@ if (room == rm_game) {
 		draw_dev_gui = !draw_dev_gui;
 	}
 	
+	if (draw_dev_gui) {
+		if (keyboard_check_pressed(vk_f1)) {
+			global.god_mode = !global.god_mode;
+		}
+		
+		if (keyboard_check_pressed(vk_f2)) {
+			lives = 5;
+		}
+		
+		if (keyboard_check_pressed(vk_f3)) {
+			global.bullets = 999;
+		}
+	}
 }
