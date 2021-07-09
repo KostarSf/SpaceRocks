@@ -1,2 +1,5 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+/// @description Item_Pickup
+
+if (sprite_index == spr_item_pickup) {
+	instance_destroy();
+}

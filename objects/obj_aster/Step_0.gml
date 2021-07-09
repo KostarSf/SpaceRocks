@@ -1,3 +1,9 @@
-move_wrap(true, true, sprite_width / 2);
+if (!global.gamePaused) {
+	speed = move_speed;
+	image_angle += rotate_direction * rotate_speed;
+} else {
+	speed = 0;
+}
 
-image_angle += rotate_direction * rotate_speed;
+
+move_wrap(true, true, sprite_width / 2);

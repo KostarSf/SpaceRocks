@@ -14,6 +14,15 @@ if (keyboard_check_pressed(vk_enter)) {
 }
 
 if (room == rm_game) {
+	if (keyboard_check_pressed(vk_escape)) {
+		global.gamePaused = !global.gamePaused;
+	}
+	
+	if (keyboard_check_pressed(ord("R"))) {
+		audio_stop_sound(msg_song);
+		start_properties();
+		room_restart();
+	}
 	
 	if (global.alive == false) {
 		global.alive = true;
@@ -37,5 +46,12 @@ if (room == rm_game) {
 	layer_x(stars_1, bg_offset / 2 + global.shipX * 0.2);
 	layer_y(stars_1, global.shipY * 0.2);
 	
-	bg_offset += 1;
+	if (!global.gamePaused) {
+		bg_offset += 1;
+	}
+	
+	if (keyboard_check_pressed(192)) {
+		draw_dev_gui = !draw_dev_gui;
+	}
+	
 }

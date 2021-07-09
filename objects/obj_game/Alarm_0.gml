@@ -5,7 +5,7 @@ if (room != rm_game) {
 }
 
 function create_aster() {
-	if (instance_number(obj_aster) > 35) {
+	if (instance_number(obj_aster) > asteroMaxCount) {
 		return;
 	}
 	
@@ -28,16 +28,15 @@ if (irandom_range(0, 4) == 0) {
 	create_aster();
 }
 
-aster_delay = 0;
-
 if (score < 1000) {
-	var score_relative = 0 + (20 - 0) * ((score - 0) / (1000 - 0));
+	//var score_relative = 0 + (20 - 0) * ((score - 0) / (1000 - 0));
+	var score_relative = linear_interpolate_value(score, 0, 1000, 0, 20);
 	aster_delay = (power(score_relative, 0.4)*4) / 2 * (-1) + 7;
 } else {
 	aster_delay = 0.35;
 }
 
-
+calculate_astero_max_count();
 
 
 alarm[0] = aster_delay * room_speed;

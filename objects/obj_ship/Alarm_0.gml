@@ -1,4 +1,4 @@
 /// @description Invincible END
 
 invincible = false;
-image_alpha = 1;
+ship_opacity = 1;

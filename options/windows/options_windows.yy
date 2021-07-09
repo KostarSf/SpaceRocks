@@ -1,7 +1,7 @@
 {
   "option_windows_display_name": "SPACE ROCKS by Kostar",
-  "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "1.0.2.0",
+  "option_windows_executable_name": "space_rocks.exe",
+  "option_windows_version": "1.0.3.3",
   "option_windows_company_info": "YoYo Games Ltd",
   "option_windows_product_info": "Created with GameMaker Studio 2",
   "option_windows_copyright_info": "Kostar",
@@ -12,7 +12,7 @@
   "option_windows_splash_screen": "${base_options_dir}/windows/splash/splash.png",
   "option_windows_use_splash": false,
   "option_windows_start_fullscreen": false,
-  "option_windows_allow_fullscreen_switching": false,
+  "option_windows_allow_fullscreen_switching": true,
   "option_windows_interpolate_pixels": false,
   "option_windows_vsync": true,
   "option_windows_resize_window": true,

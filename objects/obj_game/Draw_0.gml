@@ -8,6 +8,17 @@ switch (room) {
 		draw_set_halign(fa_right);
 		draw_text(room_width - 20, 20, "ЖИЗНЬ: "+string(lives));
 		draw_text(room_width - 20, 40, "ЗАРЯДОВ: "+string(global.bullets));
+		
+		if (draw_dev_gui) {
+			draw_text(room_width - 20, 80, "АСТЕР: "+string(instance_number(obj_aster)));
+			draw_text(room_width - 20, 100, "МАКС: "+string(asteroMaxCount));
+		
+			draw_text(room_width - 20, 120, "ПРЕДМЕТ: "+string(floor(alarm[2]/room_speed)));
+			
+			draw_text(room_width - 20, 150, "МЫШЬ: "+string(mouse_x)+" "+string(mouse_y));
+			draw_text(room_width - 20, 170, "ДВИГАЕТСЯ: "+string(global.mouseWasMoved));
+		}
+		
 		draw_set_halign(fa_left);
 		
 		break;
@@ -16,16 +27,20 @@ switch (room) {
 		draw_set_halign(fa_center);
 		var c = c_yellow;
 		draw_text_transformed_color(
-			room_width / 2, 100, "SPACE ROCKS",
+			room_width / 2, 90, "SPACE ROCKS",
 			3, 3, 0, c, c, c, c, 1);
 		draw_text(
-			room_width / 2, 200,
+			room_width / 2, 170,
 			"Продержись как можно дольше!\n\n" +
+			
+			"Управление мышью! Либо:\n\n" +
 			
 			"ВВЕРХ: лететь\n" + 
 			"ВЛЕВО/ВПРАВО: повернуть\n" +
 			"Z: выстрелить\n" +
 			"X: Супер-Заряд (тр. 50 зарядов)\n\n" +
+			
+			"ESC: Пауза   R: Быстрый рестарт\n\n" + 
 			
 			">> НАЖМИ ВВОД ЧТОБЫ НАЧАТЬ <<");
 		draw_set_halign(fa_right);

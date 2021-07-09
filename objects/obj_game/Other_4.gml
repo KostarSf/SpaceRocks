@@ -11,7 +11,9 @@ if (room = rm_game) {
 		instance_create_layer(xx, yy, "Instances", obj_aster);
 	}
 	
-		alarm[0] = 60;
+	alarm[0] = 60;
+	
+	alarm[2] = item_delay * room_speed;
 } else {
 	audio_stop_sound(msg_song);
 }
