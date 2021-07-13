@@ -1,2 +1,3 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+with (other) {
+	motion_add(point_direction(other.x, other.y, x, y), 0.2 / mass);
+}

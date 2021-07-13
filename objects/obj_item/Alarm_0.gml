@@ -7,7 +7,7 @@ if (!global.gamePaused) {
 
 	if (x > room_width + 32) {
 		instance_destroy();
-		obj_game.item_delay_add(-20);
+		item_delay_add(-20);
 	}
 
 	var border_margin = 64;

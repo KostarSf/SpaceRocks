@@ -12,6 +12,8 @@ direction_difference = 0;
 
 playing_engine_sound = false;
 
+shoot_delay = false;;
+
 function effect_invincible(duration) {
 	invincible = true;
 	alarm[0] = room_speed * duration;
@@ -20,10 +22,5 @@ function effect_invincible(duration) {
 
 // Animations variables (frames per sec)
 
-anim_step = 0;
-
-anim_accell_speed = 6;
 anim_accell_frame = 0;
-
-anim_charge_speed = 8;
 anim_charge_frame = 0;

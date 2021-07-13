@@ -1,2 +1,3 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+/// @description anim_delay
+_anim_start = true;
+audio_play_sound(snd_effect_fadeout, 2, false);

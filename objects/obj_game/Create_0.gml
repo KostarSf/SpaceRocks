@@ -1,100 +1,76 @@
 /// @description Идеи для игры
 
-game_version = "v1.0.4";
-
-function start_properties() {
-	score = 0;
-	lives = 2;
-	global.alive = true;
-	global.shoots = 0;
-	global.bullets = 10;
-	global.shipX = 0;
-	global.shipY = 0;
-	global.maxBullets = 999;
-	global.god_mode = false;
-}
+global.game_version = "v1.0.5 DEV3";
 
 start_properties();
 
-global.gamePaused = false;
+global.step_timer = 0;
 
 global.mouseWasMoved = false;
-mx = mouse_x;
-my = mouse_y;
+tmp_mx = mouse_x;
+tmp_my = mouse_y;
 
-minAstero = 5;
-maxAstero = 35;
-maxAsteroAt = 1500;
-asteroMaxCount = minAstero;
+global.minAstero = 5;
+global.maxAstero = 55;
+global.maxAsteroAt = 7000;
+global.asteroMaxCount = global.minAstero;
+
+global.background_speed = 0;
+global.background_speed_multiply = 0.35;
 
 draw_set_font(fnt_text);
-cursor_sprite = spr_cursor;
+cursor_sprite = -1;
 window_set_cursor(cr_none);
 
-aster_delay = 0;
-item_delay = 40;
-item_delay_min = 20;
-item_delay_max = 100;
-item_delay_extra_chance = 5; //%
+global.aster_delay = 0;
+global.item_delay = 40;
+global.item_delay_min = 20;
+global.item_delay_max = 100;
+global.item_delay_extra_chance = 5; //%
 
-bg_offset = 0;
+global.draw_dev_gui = false;
 
-draw_dev_gui = false;
+global.bg_stars_1 = undefined;
+global.bg_stars_2 = undefined;
 
 // Functions
 
-function create_debris(x, y, count) {
-	repeat (count) {
-		instance_create_layer(x, y, "Instances", obj_debris);
-	}
-}
-
-function create_debris_ext(x, y, count, angle, spread, speed, fade_speed) {
-	repeat (count) {
-		var debr = instance_create_layer(x, y, "Instances", obj_debris);
-		debr.set_move_speed(speed);
-		debr.fade_speed = fade_speed;
-		
-		spread = clamp(spread, 0, 359) / 2;
-		
-		var deg1 = angle - spread;
-		var deg2 = angle + spread;
-		
-		debr.direction = irandom_range(deg1, deg2);
-	}
-}
-
-function item_delay_add(delay) {
-	item_delay += delay;
+/* СЮЖЕТ
 	
-	if (item_delay < item_delay_min) {
-		item_delay = item_delay_min;
-	} else if (item_delay > item_delay_max) {
-		item_delay = item_delay_max;
-	}
-}
+	1 Этап
+	Корабль замечает в небе быстро двигающийся объект и хочет его достичь
+	Однако у него недостаточно топлива, и его необходимо собрать.
+	Остатки топлива кончатся через 10 минут
 
-function linear_interpolate_value(val, start_1, end_1, start_2, end_2) {
-	return start_2 + (end_2 - start_2) * ((val - start_1) / (end_1 - start_1));
-}
+	2 Этап
+*/
 
-function calculate_astero_max_count() {
-	if (score <= maxAsteroAt) {
-		asteroMaxCount = linear_interpolate_value(score, 0, maxAsteroAt, minAstero, maxAstero);
-	} else {
-		asteroMaxCount = maxAstero;
-	}
-	
-	asteroMaxCount = floor(asteroMaxCount);
-}
+/* 1.0.5 - последняя версия этапа "простой аркады"
 
-function spawn_item() {
-	var vertical_margin = 128;
-	var spawn_y = irandom_range(vertical_margin / 2, room_height - vertical_margin);
-	var item = instance_create_layer(-32, spawn_y, "Instances", obj_item);
-	item.spawn_y = spawn_y;
-}
+	[X] при нажатии выстрела мышкой корабль сначала поворачивается в
+		сторону указателя [при управлении мышью корабль теперь всегда смотрит на курсор]
+	[X] при управлении с клавиатуры курсор скрывается
+	[X] перевести таймеры анимаций с колхоза
+		на current_time (миллисекунды) [не сработало, работает через global.step_timer]
+	[X] перенести спавн частиц при чардже из Draw в Step корабля
+	[X] при паузе таймеры появления предметов и метеоритов приостанавливаются
+	[+] На паузе показывается соответствующая надпись
 
+	[~] Добавить таймер к геймплею и счету в конце (добавить к счету)
+
+	[X] Переработанный интерфейс
+	[ ] Задний план сменяется в зависимости от количества набраных очков
+	[ ] При смерти максимальное количество метеоритов ненадолго падает
+		шанс исчезновения метеорита за пределами карты ненадолго возрастает
+	[~] При срабатываении спец-заряда метеориты слегка отталкивает от игрока
+		с силой падающей с расстоянием
+		шанс исчезновения метеорита за пределами карты ненадолго возрастает
+	[X] Упростить меню
+	[ ] Вынести справку об управлении в отдельный экран, который показывается
+		1 раз при старте новой игры и пролистывается кнопкой
+	[ ] Реализовать сцену после выигрыша
+
+*/
 
 /* ИДЕИ ДЛЯ ИГРЫ
 	геймплей:
@@ -105,29 +81,30 @@ function spawn_item() {
 	[X] края карты отталкивают игрока
 	[ ] топливо кончается и возобновляется астероидами и предметами
 	[Х] предметы не убегают за вертикальные границы карты.
-	[?] при приближении к границе вертикальная скорость предметов уменьшается.
-	[ ] Переработать способ вертикального позиционирования предметов 
+	[~] при приближении к границе вертикальная скорость
+		предметов уменьшается. [Останавливаются рядом с границей]
+	[ ] Переработать способ вертикального позиционирования предметов
 		в зависимости от положения корабля (Предметы смещяются только вниз и дергаются
 		при преодолении кораблем границ карты)
 	[ ] случайные события (много астероидов за раз, кометы, тп)
-		
-	разное: 
-	[+] меню паузы (Простой режим паузы. таймеры продолжают тикать)
+
+	разное:
+	[~] меню паузы (Простой режим паузы. таймеры продолжают тикать) [1.0.5 - таймеры больше не тикают]
 	[ ] главное меню с настройками звука
 	[ ] музыка в главном меню
 	[ ] большая разнообразность геймплея
 	[ ] выбор режимов игры
-	
+
 	предметы:
 		- Патроны
 		- Починка
 		- Доп Жизнь
-	
+
 	визуал:
 	[X] переключаемый интерфейс отладки
 	[Х] анимация подбора предметов
 	[ ] переработать параллакс звёзд
-	[-] (Заменено анимациями предметов) предметы мигают когда летят
+	[-] (Заменено анимациями предметов) предметы мигают когда летят [не нужно]
 	[ ] добавить задний план, который постепенно плывет и
 		изменяется с течением времени в зависимости от количества очков (этапы)
 */

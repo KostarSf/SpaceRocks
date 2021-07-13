@@ -1,2 +1,2 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+_mouse_over = false;
+_mouse_pressed = false;

@@ -3,14 +3,27 @@ if (!global.gamePaused) {
 // Controlls
 
 if (global.mouseWasMoved) {
-	image_angle = point_direction(x, y, mouse_x, mouse_y);
+	global.mouse_visible = true;
+	//image_angle = point_direction(x, y, mouse_x, mouse_y);
 }
 
 if (keyboard_check(vk_left)) {
+	global.mouse_visible = false;
 	image_angle += 5;
 } else if (keyboard_check(vk_right)) {
+	global.mouse_visible = false;
 	image_angle -= 5;
 } 
+
+// если мышь двинулась то активировать автонаводку на прицел и сам прицел
+// если были нажаты стрелки, отлючить автонавод и прицел
+
+if (global.mouse_visible) {
+	image_angle = point_direction(x, y, mouse_x, mouse_y);
+	cursor_sprite = spr_cursor_crosshair;
+} else {
+	cursor_sprite = -1;
+}
 
 direction_difference = angle_difference(image_angle, direction);
 
@@ -30,10 +43,10 @@ if (keyboard_check(vk_up) || mouse_check_button(mb_right)) {
 			audio_play_sound(snd_engine, 0, true);
 		}
 		
-		var sparkle_count = 10 - obj_game.linear_interpolate_value(clamp(speed, 0, 3), 0, 3, 0, 8);
+		var sparkle_count = 10 - linear_interpolate_value(clamp(speed, 0, 3), 0, 3, 0, 8);
 		var _x = x + lengthdir_x(10, image_angle + 180);
 		var _y = y + lengthdir_y(10, image_angle + 180);
-		obj_game.create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 45, 2, 0.05);
+		create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 45, 2, 0.05);
 	}
 	
 	if (speed <= 1) {
@@ -42,18 +55,18 @@ if (keyboard_check(vk_up) || mouse_check_button(mb_right)) {
 		motion_add(image_angle, 0.05);
 	}
 	
-	var sparkle_count = 10 - obj_game.linear_interpolate_value(speed, 0, 2, 0, 10);
+	var sparkle_count = 10 - linear_interpolate_value(speed, 0, 2, 0, 10);
 	var _x = x + lengthdir_x(10, image_angle + 180);
 	var _y = y + lengthdir_y(10, image_angle + 180);
-	obj_game.create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 20, 2.5, 0.05);
+	create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 20, 2.5, 0.05);
 	
 	if (abs(direction_difference) > 100) {
-		var motion_count = obj_game.linear_interpolate_value(abs(direction_difference), 101, 180, 0, 0.1);
+		var motion_count = linear_interpolate_value(abs(direction_difference), 101, 180, 0, 0.1);
 		motion_add(image_angle, motion_count);
-		var sparkle_count = obj_game.linear_interpolate_value(abs(direction_difference), 101, 180, 0, 5);
+		var sparkle_count = linear_interpolate_value(abs(direction_difference), 101, 180, 0, 5);
 		var _x = x + lengthdir_x(10, image_angle + 180);
 		var _y = y + lengthdir_y(10, image_angle + 180);
-		obj_game.create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 45, 2, 0.01);
+		create_debris_ext(_x, _y, sparkle_count, image_angle + 180, 45, 2, 0.01);
 	}
 } else {
 	accelerating = false;
@@ -81,6 +94,24 @@ if (speed < 0) {
 
 current_speed = speed;
 
+switch (global.game_stage) {
+	case 2:
+		if (global.step_timer % 60 == 0) {
+			x += 1;
+		}
+		break;
+	case 3:
+		if (global.step_timer % 30 == 0) {
+			x += 1;
+		}
+		break;
+	case 4:
+		if (global.step_timer % 10 == 0) {
+			x += 1;
+		}
+		break;
+}
+
 // Map Border Behaviour
 
 move_wrap(true, true, sprite_width / 2);
@@ -103,7 +134,10 @@ if (x < force_margin) {
 // Shooting
 
 if (keyboard_check_pressed(ord("Z")) || mouse_check_button_pressed(mb_left)) {
-	if (global.bullets > 0) {
+	
+	if (global.bullets > 0 && !shoot_delay) {
+		shoot_delay = true;
+		alarm[5] = room_speed / 2;
 		audio_play_sound(snd_shoot, 1, false);
 		var _x = x + lengthdir_x(12, image_angle);
 		var _y = y + lengthdir_y(12, image_angle);
@@ -113,10 +147,16 @@ if (keyboard_check_pressed(ord("Z")) || mouse_check_button_pressed(mb_left)) {
 		bullet.move_speed = speed + 3;
 		global.shoots += 1;
 		global.bullets -= 1;
+		
+		var gun_fire = instance_create_layer(x, y, "Instances", obj_shoot_fire);
+		gun_fire.image_angle = image_angle;
+		gun_fire.ship_parent = id;
 	} else {
-		audio_play_sound(snd_out_of_ammo, 0, false);
+		if (!shoot_delay)
+			audio_play_sound(snd_out_of_ammo, 0, false);
 	}
 }
+
 
 if (keyboard_check_pressed(ord("X"))) {
 	if (global.bullets >= 50 && !charging_delay) {
@@ -141,15 +181,16 @@ if (revind) {
 	effect_invincible(3);
 }
 
+if (charging) {
+	if (global.step_timer % 10 == 0) {
+		create_debris(x, y, irandom_range(0, 4));
+	}
+}
+
 // Variables
 
 global.shipX = x;
 global.shipY = y;
-
-anim_step += 1;
-if (anim_step > 127) {
-	anim_step = 0;
-}
 
 
 // if (!global.gamePaused) {

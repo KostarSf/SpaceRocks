@@ -8,10 +8,7 @@ if (!invincible && !global.god_mode) {
 		with (other) {
 			instance_destroy();
 		
-			//repeat (10) {
-			//	instance_create_layer(x, y, "Instances", obj_debris);
-			//}
-			obj_game.create_debris(x, y, 10);
+			create_debris(x, y, 10);
 			
 			instance_create_layer(x, y, "Instances", obj_blow);
 		}

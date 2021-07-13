@@ -1,4 +1,8 @@
 if (!global.gamePaused) {
+	if (move_speed < 0.1) {
+		instance_destroy();
+	}
+	
 	speed = move_speed;
 	image_angle = direction;
 	
@@ -8,7 +12,7 @@ if (!global.gamePaused) {
 		instance_destroy();
 	}
 
-	speed = speed / 1.02;
+	move_speed = speed / 1.01;
 } else {
 	speed = 0;
 }

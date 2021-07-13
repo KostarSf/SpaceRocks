@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "gui",
+    "path": "folders/Спрайты/gui.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_bg_border",

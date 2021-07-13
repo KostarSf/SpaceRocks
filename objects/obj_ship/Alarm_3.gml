@@ -10,3 +10,4 @@ repeat (50) {
 	bullet.direction = bullet.image_angle;
 	bullet.move_speed = speed + 3;
 }
+instance_create_layer(x, y, "Instances", obj_blow_wave);

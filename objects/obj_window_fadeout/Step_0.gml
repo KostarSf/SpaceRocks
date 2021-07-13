@@ -1,2 +1,12 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+if (!_anim_done && _anim_start) {
+	if (global.step_timer % 5 == 0) {
+		_anim_step += 5;
+
+		if (_anim_step >= 100) {
+			_anim_step = 100;
+			_anim_done = true;
+			show_debug_message("Animation finished");
+			alarm[0] = room_speed;
+		}
+	}
+}

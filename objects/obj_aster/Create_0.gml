@@ -12,6 +12,8 @@ sprite_index = choose(
 	spr_aster_large
 );
 
+image_index = irandom_range(0, image_number - 1);
+
 switch (sprite_index) {
 	case spr_aster_med:
 		mass = 2.5;
@@ -30,3 +32,33 @@ speed = move_speed;
 image_alpha = 0.8;
 
 alarm[0] = 4 * room_speed;
+
+
+destroy = function(spawn_smaller_asteros, give_goodies_to_player) {
+	instance_destroy();
+	var pieces_count = irandom_range(0, 2) * spawn_smaller_asteros;
+	
+	if (sprite_index == spr_aster_large) {
+		score += ceil(15 * global.score_multiply / 10) * give_goodies_to_player;
+		global.bullets += choose(2, 3) * give_goodies_to_player;
+		repeat (pieces_count) {
+			var aster = instance_create_layer(x, y, "Instances", obj_aster);
+			aster.sprite_index = spr_aster_med;
+			aster.direction = direction + irandom_range(-70, 70);
+		}
+	} else if (sprite_index == spr_aster_med) {
+		score += ceil(10 * global.score_multiply / 10) * give_goodies_to_player;
+		global.bullets += choose(1, 2) * give_goodies_to_player;
+		repeat (pieces_count) {
+			var aster = instance_create_layer(x, y, "Instances", obj_aster);
+			aster.sprite_index = spr_aster_small;
+			aster.direction = direction + irandom_range(-70, 70);
+		}
+	} else {
+		score += ceil(5 * global.score_multiply / 10) * give_goodies_to_player;
+		global.bullets += 1 * give_goodies_to_player;
+	}
+	
+	create_debris(x, y, 10);
+	instance_create_layer(x, y, "Instances", obj_blow);
+}

@@ -1,2 +1,2 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+/// @description Emote delay
+instance_create_layer(0, 0, "Instances", obj_emote);

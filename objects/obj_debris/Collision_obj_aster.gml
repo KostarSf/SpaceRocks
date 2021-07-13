@@ -1,2 +1,4 @@
-/// @description Вставьте описание здесь
-// Вы можете записать свой код в этом редакторе
+if (!skip_objects) {
+	direction = point_direction(other.x, other.y, x, y);
+	move_speed /= 1.5;
+}
