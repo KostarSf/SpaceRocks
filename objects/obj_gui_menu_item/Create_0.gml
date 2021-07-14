@@ -7,3 +7,8 @@ _mouse_over = false;
 _mouse_pressed = false;
 
 item_disabled = false;
+
+_gui_x = x;
+_gui_y = y;
+
+alarm[0] = 1;

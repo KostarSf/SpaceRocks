@@ -5,6 +5,7 @@ move_speed = random_range(0.9, 1.1);
 speed = move_speed;
 
 fade_speed = 0.01;
+speed_decrease = 0.01;
 
 skip_objects = true;
 

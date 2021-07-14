@@ -2,6 +2,8 @@ if (!invincible && !global.god_mode) {
 	if (second_life && other.sprite_index == spr_aster_small) {
 		second_life = false;
 		
+		fuel_remove(250, true);
+		
 		var crush_direction = point_direction(other.x, other.y, x, y);
 		motion_add(crush_direction, other.speed);
 		
@@ -18,6 +20,8 @@ if (!invincible && !global.god_mode) {
 		
 		effect_invincible(3);
 	} else {
+		fuel_remove(1000, true);
+		
 		var crush_direction = point_direction(x, y, other.x, other.y);
 		var spd = speed;
 		with (other) {
@@ -29,6 +33,8 @@ if (!invincible && !global.god_mode) {
 
 		lives -= 1;
 		global.alive = false;
+		global.ship_hspeed = 0;
+		global.ship_vspeed = 0;
 	
 		audio_stop_sound(snd_engine);
 		audio_play_sound(snd_death, 1, false);

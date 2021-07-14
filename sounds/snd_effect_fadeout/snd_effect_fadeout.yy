@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_effect_fadeout.wav",
-  "duration": 1.903503,
+  "duration": 1.898503,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

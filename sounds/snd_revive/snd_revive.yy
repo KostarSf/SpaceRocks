@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_revive.wav",
-  "duration": 0.994433,
+  "duration": 0.989433,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

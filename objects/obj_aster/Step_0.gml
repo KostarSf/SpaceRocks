@@ -5,6 +5,9 @@ if (!global.gamePaused) {
 	if (global.astero_force_despawn_out_of_room ) {
 		move_speed += 0.004;
 	}
+	
+	x += -global.ship_hspeed / global.ship_moving_mult;
+	y += -global.ship_vspeed / global.ship_moving_mult;
 } else {
 	speed = 0;
 }

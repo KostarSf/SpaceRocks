@@ -1,5 +1,5 @@
-x = room_width / 3;
-y = room_height / 3;
+x = display_get_gui_width() / 3;
+y = display_get_gui_height() / 3;
 
 menu_item_titles = ["Продолжить", "Рестарт", "Выйти"];
 menu_item_actions = [

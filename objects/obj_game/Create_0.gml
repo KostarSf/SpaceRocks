@@ -1,6 +1,6 @@
 /// @description Идеи для игры
 
-global.game_version = "v1.0.5 DEV3";
+global.game_version = "v1.0.5 DEV5";
 
 start_properties();
 
@@ -23,7 +23,7 @@ cursor_sprite = -1;
 window_set_cursor(cr_none);
 
 global.aster_delay = 0;
-global.item_delay = 40;
+global.item_delay = 30;
 global.item_delay_min = 20;
 global.item_delay_max = 100;
 global.item_delay_extra_chance = 5; //%

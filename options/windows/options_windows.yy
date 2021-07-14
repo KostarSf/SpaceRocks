@@ -1,7 +1,7 @@
 {
-  "option_windows_display_name": "SPACE ROCKS by Kostar",
+  "option_windows_display_name": "SpaceTail",
   "option_windows_executable_name": "space_rocks.exe",
-  "option_windows_version": "1.0.5.3",
+  "option_windows_version": "1.0.5.5",
   "option_windows_company_info": "YoYo Games Ltd",
   "option_windows_product_info": "Created with GameMaker Studio 2",
   "option_windows_copyright_info": "Kostar",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "msg_song.wav",
-  "duration": 65.08974,
+  "duration": 65.08474,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_shoot.wav",
-  "duration": 0.135476,
+  "duration": 0.130476,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

@@ -12,8 +12,11 @@ if (!global.gamePaused) {
 
 	var border_margin = 64;
 
-	x = x + move_step;
-	y = spawn_y + (global.shipY * 0.3);
+	_offset_x += global.ship_hspeed;
+	_offset_y += global.ship_vspeed;
+
+	x = x + move_step - _offset_x;
+	y = y - _offset_y;
 
 	if (y < border_margin) {
 		y = border_margin;

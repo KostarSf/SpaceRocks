@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_coin.wav",
-  "duration": 0.344002,
+  "duration": 0.339002,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

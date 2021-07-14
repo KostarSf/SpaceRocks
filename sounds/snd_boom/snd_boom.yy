@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_boom.wav",
-  "duration": 2.260374,
+  "duration": 2.255374,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

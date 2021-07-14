@@ -5,8 +5,8 @@ if (!_anim_done && _anim_start) {
 		if (_anim_step >= 100) {
 			_anim_step = 100;
 			_anim_done = true;
-			show_debug_message("Animation finished");
 			alarm[0] = room_speed;
 		}
 	}
 }
+

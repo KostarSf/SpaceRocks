@@ -35,6 +35,19 @@ alarm[0] = 4 * room_speed;
 
 
 destroy = function(spawn_smaller_asteros, give_goodies_to_player) {
+	if (give_goodies_to_player) {
+		if (irandom_range(0, 50) == 0) {
+			spawn_item(x, y);
+		}
+		
+		if (irandom_range(0, 2) == 0) {
+			repeat (irandom_range(1, 6)) {
+				instance_create_layer(x, y, "Instances", obj_fuel);
+			}
+		}
+	}
+	
+	
 	instance_destroy();
 	var pieces_count = irandom_range(0, 2) * spawn_smaller_asteros;
 	

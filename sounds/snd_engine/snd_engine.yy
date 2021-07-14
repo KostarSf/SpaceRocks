@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_engine.wav",
-  "duration": 2.018379,
+  "duration": 2.013379,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

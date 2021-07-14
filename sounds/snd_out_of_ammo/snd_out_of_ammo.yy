@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_out_of_ammo.wav",
-  "duration": 0.120374,
+  "duration": 0.115374,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",

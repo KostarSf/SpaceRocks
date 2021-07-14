@@ -39,14 +39,27 @@ function format_gamescore(game_score) {
 function draw_gui_game_time() {
 	var _gl_ofst = global.game_gui_animated_offset;
 	
+	var _cur_time = 603 - global.sessionTime;
+	if (_cur_time > 600) _cur_time = 600;
+	
 	draw_set_halign(fa_center);
+	
 	var c = c_dkgrey;
 	draw_text_transformed_color(
-		room_width / 2, 24 - _gl_ofst, format_gametime(global.sessionTime),
+		display_get_gui_width() / 2, 23 - _gl_ofst, "Fallback Generator",
+		1, 1, 1, c, c, c, c, 1);
+	var c = c_white;
+	draw_text_transformed_color(
+		display_get_gui_width() / 2, 20 - _gl_ofst, "Fallback Generator",
+		1, 1, 1, c, c, c, c, 1);
+	
+	var c = c_dkgrey;
+	draw_text_transformed_color(
+		display_get_gui_width() / 2, 44 - _gl_ofst, format_gametime(_cur_time),
 		2, 2, 1, c, c, c, c, 1);
 	var c = c_white;
 	draw_text_transformed_color(
-		room_width / 2, 20 - _gl_ofst, format_gametime(global.sessionTime),
+		display_get_gui_width() / 2, 40 - _gl_ofst, format_gametime(_cur_time),
 		2, 2, 1, c, c, c, c, 1);
 }
 
@@ -74,7 +87,7 @@ function draw_gui_game_score_multiply() {
 	draw_set_halign(fa_left);
 	var _1 = string(global.score_multiply div 10);
 	var _2 = string( global.score_multiply % 10);
-	//draw_text(room_width / 2, 100, _1 + "." + _2 + "X");
+	//draw_text(display_get_gui_width() / 2, 100, _1 + "." + _2 + "X");
 	
 	var c = c_dkgrey;
 	draw_text_transformed_color(
@@ -96,20 +109,26 @@ function draw_gui_game_accuracy() {
 	
 	var perc = floor(global.kills / global.shoots * 100);
 	
+	// Fuel
+	if (global.fuel == 10000) perc = "100%";
+	else perc = string(floor(global.fuel % 10000 / 100)) + "%";
+	
 	if (perc == 100) _digits = 3;
 	else if (perc > 9) _digits = 2;
 	else _digits = 1;
 	
-	perc = string(perc);
-	perc = (perc == "NaN" ? string(0) : perc) + "%";
+	//perc = string(perc);
+	//perc = (perc == "NaN" ? string(0) : perc) + "%";
+	
+
 	
 	var c = c_dkgrey;
 	draw_text_transformed_color(
-		room_width - 20, room_height - 20 + _gl_ofst, perc,
+		display_get_gui_width() - 20, display_get_gui_height() - 20 + _gl_ofst, perc,
 		2, 2, 1, c, c, c, c, 1);
 	c = c_white;
 	draw_text_transformed_color(
-		room_width - 20, room_height - 23 + _gl_ofst, perc,
+		display_get_gui_width() - 20, display_get_gui_height() - 23 + _gl_ofst, perc,
 		2, 2, 1, c, c, c, c, 1);
 		
 	draw_set_valign(fa_top);
@@ -127,8 +146,8 @@ function draw_gui_game_accuracy() {
 			break;
 	}
 	
-	draw_sprite_ext(spr_cursor_crosshair, 0, room_width - _mg, room_height - 28 - 11 + _gl_ofst, 0.7, 0.7, 0, c_dkgray, 1);
-	draw_sprite_ext(spr_cursor_crosshair, 0, room_width - _mg, room_height - 31 - 11 + _gl_ofst, 0.7, 0.7, 0, c_white, 1);
+	draw_sprite_ext(spr_icon_fuel, 0, display_get_gui_width() - _mg, display_get_gui_height() - 28 - 11 + _gl_ofst, 0.7, 0.7, 0, c_dkgray, 1);
+	draw_sprite_ext(spr_icon_fuel, 0, display_get_gui_width() - _mg, display_get_gui_height() - 31 - 11 + _gl_ofst, 0.7, 0.7, 0, c_white, 1);
 }
 
 function draw_gui_game_lives() {
@@ -139,8 +158,8 @@ function draw_gui_game_lives() {
 	var i = lives;
 	
 	repeat (lives) {
-		draw_sprite_ext(spr_ship, 0, room_width - 10 - i * 20, 41 - _gl_ofst, 0.7, 0.7, 95, c_dkgrey, 1);
-		draw_sprite_ext(spr_ship, 0, room_width - 10 - i * 20, 39 - _gl_ofst, 0.7, 0.7, 95, c_white, 1);
+		draw_sprite_ext(spr_ship, 0, display_get_gui_width() - 10 - i * 20, 41 - _gl_ofst, 0.7, 0.7, 95, c_dkgrey, 1);
+		draw_sprite_ext(spr_ship, 0, display_get_gui_width() - 10 - i * 20, 39 - _gl_ofst, 0.7, 0.7, 95, c_white, 1);
 		i -= 1;
 	}
 }
@@ -162,14 +181,14 @@ function draw_gui_game_ammo() {
 		
 	var c = c_dkgrey;
 	draw_text_transformed_color(
-		44, room_height - 20 + _gl_ofst, string(global.bullets),
+		44, display_get_gui_height() - 20 + _gl_ofst, string(global.bullets),
 		2, 2, 1, c, c, c, c, 1);
 	draw_text_transformed_color(
-		44, room_height - 23 + _gl_ofst, string(global.bullets),
+		44, display_get_gui_height() - 23 + _gl_ofst, string(global.bullets),
 		2, 2, 1, spr_c, spr_c, spr_c, spr_c, 1);
 	
-	draw_sprite_ext(spr_icon_ammo, 0, 20, room_height - 28 + _gl_ofst, 1, 1, 0, c_dkgray, 1);
-	draw_sprite_ext(spr_icon_ammo, 0, 20, room_height - 31 + _gl_ofst, 1, 1, 0, spr_c, 1);
+	draw_sprite_ext(spr_icon_ammo, 0, 20, display_get_gui_height() - 28 + _gl_ofst, 1, 1, 0, c_dkgray, 1);
+	draw_sprite_ext(spr_icon_ammo, 0, 20, display_get_gui_height() - 31 + _gl_ofst, 1, 1, 0, spr_c, 1);
 	
 	draw_set_valign(fa_top);
 }
@@ -181,7 +200,7 @@ function draw_gui_game_stage() {
 	draw_set_halign(fa_center);
 	
 	draw_set_color(c_white);
-	draw_text(room_width / 2, 70 - _gl_ofst, "stage: " + string(global.game_stage));
+	draw_text(display_get_gui_width() / 2, 70 - _gl_ofst, "stage: " + string(global.game_stage));
 }
 
 
@@ -190,14 +209,14 @@ function draw_gui_dev() {
 	
 	draw_set_color(c_white);
 	
-	draw_text(room_width - 20, 80, "АСТЕР: "+string(instance_number(obj_aster)));
-	draw_text(room_width - 20, 100, "МАКС: "+string(global.asteroMaxCount));
-	draw_text(room_width - 20, 120, "СЛЕД. ВОЛНА: "+string(floor(alarm[0]/room_speed)));
+	draw_text(display_get_gui_width() - 20, 80, "АСТЕР: "+string(instance_number(obj_aster)));
+	draw_text(display_get_gui_width() - 20, 100, "МАКС: "+string(global.asteroMaxCount));
+	draw_text(display_get_gui_width() - 20, 120, "СЛЕД. ВОЛНА: "+string(floor(alarm[0]/room_speed)));
 		
-	draw_text(room_width - 20, 150, "ПРЕДМЕТ: "+string(floor(alarm[2]/room_speed)));
+	draw_text(display_get_gui_width() - 20, 150, "ПРЕДМЕТ: "+string(floor(alarm[2]/room_speed)));
 			
-	draw_text(room_width - 20, 180, "МЫШЬ: "+string(mouse_x)+" "+string(mouse_y));
-	draw_text(room_width - 20, 200, "ДВИГАЕТСЯ: "+string(global.mouseWasMoved));
+	draw_text(display_get_gui_width() - 20, 180, "МЫШЬ: "+string(mouse_x)+" "+string(mouse_y));
+	draw_text(display_get_gui_width() - 20, 200, "ДВИГАЕТСЯ: "+string(global.mouseWasMoved));
 	
 	
 	draw_set_halign(fa_left);
@@ -227,7 +246,7 @@ function draw_gui_dev() {
 function draw_gui_app_version() {
 	draw_set_halign(fa_right);
 	draw_set_color(c_white);
-	draw_text(room_width - 20, room_height - 30, global.game_version);
+	draw_text(display_get_gui_width() - 20, display_get_gui_height() - 30, global.game_version);
 }
 
 
@@ -267,8 +286,8 @@ function draw_gui_dialog_title(width, height, text) {
 
 
 /*function draw_gui_pause_menu() {
-	draw_gui_window(room_width / 3, room_height / 3, room_width / 3, room_height / 3);
-	draw_gui_dialog_title(room_width / 2, 120, "ПАУЗА");
+	draw_gui_window(display_get_gui_width() / 3, display_get_gui_height() / 3, display_get_gui_width() / 3, display_get_gui_height() / 3);
+	draw_gui_dialog_title(display_get_gui_width() / 2, 120, "ПАУЗА");
 }*/
 
 function open_menu(menu_obj) {
@@ -285,14 +304,14 @@ function draw_gui_application_borders() {
 	var border_width = 2;
 	
 	draw_set_color(c_black);
-	draw_rectangle(0, 0, room_width, border_width * 2, false);
-	draw_rectangle(0, room_height - border_width * 2, room_width, room_height, false);
-	draw_rectangle(0, 0, border_width * 2, room_height, false);
-	draw_rectangle(room_width - border_width * 2, 0, room_width, room_height, false);
+	draw_rectangle(0, 0, display_get_gui_width(), border_width * 2, false);
+	draw_rectangle(0, display_get_gui_height() - border_width * 2, display_get_gui_width(), display_get_gui_height(), false);
+	draw_rectangle(0, 0, border_width * 2, display_get_gui_height(), false);
+	draw_rectangle(display_get_gui_width() - border_width * 2, 0, display_get_gui_width(), display_get_gui_height(), false);
 	
 	draw_set_color(c_white);
-	draw_rectangle(0, 0, room_width, border_width, false);
-	draw_rectangle(0, room_height - border_width, room_width, room_height, false);
-	draw_rectangle(0, 0, border_width, room_height, false);
-	draw_rectangle(room_width - border_width, 0, room_width, room_height, false);
+	draw_rectangle(0, 0, display_get_gui_width(), border_width, false);
+	draw_rectangle(0, display_get_gui_height() - border_width, display_get_gui_width(), display_get_gui_height(), false);
+	draw_rectangle(0, 0, border_width, display_get_gui_height(), false);
+	draw_rectangle(display_get_gui_width() - border_width, 0, display_get_gui_width(), display_get_gui_height(), false);
 }

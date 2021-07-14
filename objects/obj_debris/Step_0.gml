@@ -1,7 +1,10 @@
 if (!global.gamePaused) {
-	if (move_speed < 0.1) {
-		instance_destroy();
-	}
+	x += -global.ship_hspeed / global.ship_moving_mult;
+	y += -global.ship_vspeed / global.ship_moving_mult;
+	
+	//if (move_speed < 0.1) {
+	//	instance_destroy();
+	//}
 	
 	speed = move_speed;
 	image_angle = direction;
@@ -12,7 +15,7 @@ if (!global.gamePaused) {
 		instance_destroy();
 	}
 
-	move_speed = speed / 1.01;
+	move_speed = speed / (1 + speed_decrease);
 } else {
 	speed = 0;
 }

@@ -10,10 +10,9 @@ function start_properties() {
 	global.shipY = 0;
 	global.maxBullets = 999;
 	global.god_mode = false;
+	global.fuel = 500;
 
-	global.sessionTime = 0;
-	global.sessionStartedAt = current_time;
-	global.sessionStartedAtModify = global.sessionStartedAt;
+	global.ship_max_speed = 5;
 
 	global.gamePaused = false;
 	global.pause_time = -1;
@@ -32,7 +31,19 @@ function start_properties() {
 	global.bg_stars_2_x = 0;
 	global.bg_stars_2_y = 0;
 	
-	global.game_gui_animated_offset = 100;
+	global.game_gui_animated_offset = 200;
+	
+	global.ship_hspeed = 0;
+	global.ship_vspeed = 0;
+	
+	global.ship_moving_mult = 1.4;
+	global.ship_accelerating = false;
+}
+
+function reset_game_timer() {
+	global.sessionTime = 0;
+	global.sessionStartedAt = current_time;
+	global.sessionStartedAtModify = global.sessionStartedAt;
 }
 
 function respawn_player() {
@@ -51,11 +62,13 @@ function respawn_player() {
 }
 
 
-function spawn_item() {
-	var vertical_margin = 128;
-	var spawn_y = irandom_range(vertical_margin / 2, room_height - vertical_margin);
-	var item = instance_create_layer(-32, spawn_y, "Instances", obj_item);
-	item.spawn_y = spawn_y;
+function spawn_item(x, y) {
+	//var vertical_margin = 128;
+	//var spawn_y = irandom_range(vertical_margin / 2, room_height - vertical_margin);
+	//var item = instance_create_layer(-32, spawn_y, "Instances", obj_item);
+	//item.spawn_y = spawn_y;
+	
+	instance_create_layer(x, y, "Instances", obj_item);
 }
 
 
@@ -119,11 +132,14 @@ function create_debris(x, y, count) {
 }
 
 
-function create_debris_ext(x, y, count, angle, spread, speed, fade_speed) {
+function create_debris_ext_2(x, y, count, angle, spread, speed, fade_speed, scale, speed_decrease) {
 	repeat (count) {
 		var debr = instance_create_layer(x, y, "Instances", obj_debris);
 		debr.set_move_speed(speed);
 		debr.fade_speed = fade_speed;
+		debr.image_xscale = scale;
+		debr.image_yscale = scale;
+		debr.speed_decrease = speed_decrease;
 		
 		spread = clamp(spread, 0, 359) / 2;
 		
@@ -134,6 +150,28 @@ function create_debris_ext(x, y, count, angle, spread, speed, fade_speed) {
 	}
 }
 
+
+function create_debris_ext(x, y, count, angle, spread, speed, fade_speed) {
+	create_debris_ext_2(x, y, count, angle, spread, speed, fade_speed, 1, 0.01);
+}
+
+
+function fuel_add(count) {
+	global.fuel += count;
+	if (global.fuel > 10000) global.fuel = 10000;
+}
+
+function fuel_remove(count, forced) {
+	count = floor(count);
+	
+	if (global.fuel < count && !forced) return false;
+	else {
+		global.fuel -= count;
+	}
+	
+	if (global.fuel < 0) global.fuel = 0;
+	return true;
+}
 
 function game_pause_toggle() {
 	global.gamePaused = !global.gamePaused;

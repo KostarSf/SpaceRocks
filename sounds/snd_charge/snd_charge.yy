@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_charge.wav",
-  "duration": 2.990079,
+  "duration": 2.985079,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",
