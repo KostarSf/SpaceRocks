@@ -7,9 +7,11 @@ switch (animation_type) {
 		if (keyboard_check_pressed(vk_escape) 
 			|| keyboard_check_pressed(vk_space) 
 			|| keyboard_check_pressed(vk_enter)) {
-				if (!instance_exists(obj_far_star)) {
-					instance_create_layer(0, 0, "Instances", obj_far_star);
+				if (!instance_exists(obj_far_star_animated)) {
+					instance_create_layer(0, 0, "Instances", obj_far_star_animated);
 				}
+				audio_stop_sound(msc_game_theme_1_intro);
+				audio_stop_sound(msc_game_theme_1);
 				room_goto(rm_game);
 				instance_create_layer(0, 0, "Instances", obj_window_fadeout_simple);
 			}
@@ -22,8 +24,8 @@ switch (animation_type) {
 			
 		} else if (y > room_height / 2 + 1) {
 			speed = 0.075;
-			if (!instance_exists(obj_far_star)) {
-				instance_create_layer(0, 0, "Instances", obj_far_star);
+			if (!instance_exists(obj_far_star_animated)) {
+				instance_create_layer(0, 0, "Instances", obj_far_star_animated);
 			}
 			if (instance_number(obj_aster) == 0) {
 				var aster = instance_create_layer(room_width / 3, -55, "Instances", obj_aster);

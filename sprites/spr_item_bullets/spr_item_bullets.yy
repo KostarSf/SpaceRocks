@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "game_objects",
+    "path": "folders/Спрайты/game_objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_item_bullets",

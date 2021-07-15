@@ -28,8 +28,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Объекты",
-    "path": "folders/Объекты.yy",
+    "name": "visual",
+    "path": "folders/Объекты/visual.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_charge_splash",

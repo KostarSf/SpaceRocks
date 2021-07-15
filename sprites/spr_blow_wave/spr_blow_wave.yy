@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "behaviour",
+    "path": "folders/Спрайты/behaviour.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_blow_wave",

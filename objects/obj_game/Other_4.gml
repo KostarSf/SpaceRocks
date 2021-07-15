@@ -8,7 +8,12 @@ if (room == rm_game_intro || room == rm_game) {
 	}
 }
 
-if (room = rm_game) {
+if (room == rm_game_intro) {
+	audio_stop_sound(msc_game_theme_1);
+	audio_play_sound(msc_game_theme_1_intro, 10, false);
+}
+
+if (room == rm_game) {
 	var _batch = instance_create_layer(0, 0, "Instances", obj_fuel_batch);
 	_batch.x = room_width / 2;
 	_batch.y = 0 ;
@@ -25,7 +30,10 @@ if (room = rm_game) {
 	layer_y(global.bg_stars_2, global.bg_stars_2_y + obj_camera.camera_y);
 
 	
-	audio_play_sound(msg_song, 10, true);
+	if (!audio_is_playing(msc_game_theme_1_intro) && !audio_is_playing(msc_game_theme_1)) {
+		audio_play_sound(msc_game_theme_1, 10, true);
+	}
+	
 	if (instance_number(obj_aster) == 0) {
 		repeat (3) {
 			var xx = choose(
@@ -51,6 +59,8 @@ if (room = rm_game) {
 }
 
 if (room == rm_start) {
+	audio_stop_sound(msc_game_theme_1);
+	audio_stop_sound(msc_game_theme_1_intro);
 	instance_destroy(obj_emote);
 	global.gamePaused = false;
 	if (!instance_exists(obj_menu_ship)) instance_create_layer(0, 0, "Instances", obj_menu_ship);

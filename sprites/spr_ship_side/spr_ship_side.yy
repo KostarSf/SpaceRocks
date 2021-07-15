@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "player",
+    "path": "folders/Спрайты/player.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_ship_side",

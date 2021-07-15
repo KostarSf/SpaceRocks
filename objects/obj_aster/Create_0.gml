@@ -32,13 +32,17 @@ speed = move_speed;
 image_alpha = 0.8;
 
 alarm[0] = 4 * room_speed;
+alarm[1] = 1;
 
 
 destroy = function(spawn_smaller_asteros, give_goodies_to_player) {
 	if (give_goodies_to_player) {
+		/*
 		if (irandom_range(0, 50) == 0) {
 			spawn_item(x, y);
 		}
+		*/
+		if (sprite_index == spr_aster_med_item) spawn_item(x, y);
 		
 		if (irandom_range(0, 2) == 0) {
 			repeat (irandom_range(1, 6)) {

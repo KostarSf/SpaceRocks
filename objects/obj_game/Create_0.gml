@@ -1,6 +1,6 @@
 /// @description Идеи для игры
 
-global.game_version = "v1.0.5 DEV5";
+global.game_version = "v1.0.5 DEV-6";
 
 start_properties();
 
@@ -32,6 +32,9 @@ global.draw_dev_gui = false;
 
 global.bg_stars_1 = undefined;
 global.bg_stars_2 = undefined;
+
+global.sessionTime = 0;
+global.item_create_chanse = 50;
 
 // Functions
 

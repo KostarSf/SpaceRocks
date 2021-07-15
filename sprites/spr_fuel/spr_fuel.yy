@@ -25,16 +25,16 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"34fcaf78-0ae9-42f4-983d-75a5f372d695","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"34fcaf78-0ae9-42f4-983d-75a5f372d695","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"4006ec90-3fae-4f61-9788-0db15ed5e790","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"34fcaf78-0ae9-42f4-983d-75a5f372d695","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"e8c9f76c-c60d-44ce-969b-7ee43d9d5695","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"34fcaf78-0ae9-42f4-983d-75a5f372d695","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"4006ec90-3fae-4f61-9788-0db15ed5e790","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_fuel","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"34fcaf78-0ae9-42f4-983d-75a5f372d695","tags":[],"resourceType":"GMSpriteFrame",},
     {"compositeImage":{"FrameId":{"name":"263383cb-f25d-49f7-96e6-900ad5cf67c1","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"263383cb-f25d-49f7-96e6-900ad5cf67c1","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"4006ec90-3fae-4f61-9788-0db15ed5e790","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"263383cb-f25d-49f7-96e6-900ad5cf67c1","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"e8c9f76c-c60d-44ce-969b-7ee43d9d5695","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"263383cb-f25d-49f7-96e6-900ad5cf67c1","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"4006ec90-3fae-4f61-9788-0db15ed5e790","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_fuel","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"263383cb-f25d-49f7-96e6-900ad5cf67c1","tags":[],"resourceType":"GMSpriteFrame",},
     {"compositeImage":{"FrameId":{"name":"6b01d586-5a5d-478c-ac81-813b4ec1a19b","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"6b01d586-5a5d-478c-ac81-813b4ec1a19b","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"4006ec90-3fae-4f61-9788-0db15ed5e790","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"6b01d586-5a5d-478c-ac81-813b4ec1a19b","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"e8c9f76c-c60d-44ce-969b-7ee43d9d5695","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"6b01d586-5a5d-478c-ac81-813b4ec1a19b","path":"sprites/spr_fuel/spr_fuel.yy",},"LayerId":{"name":"4006ec90-3fae-4f61-9788-0db15ed5e790","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_fuel","path":"sprites/spr_fuel/spr_fuel.yy",},"resourceVersion":"1.0","name":"6b01d586-5a5d-478c-ac81-813b4ec1a19b","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -81,8 +81,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "game_objects",
+    "path": "folders/Спрайты/game_objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_fuel",

@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Объекты",
-    "path": "folders/Объекты.yy",
+    "name": "gui",
+    "path": "folders/Объекты/gui.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_window_fadeout",

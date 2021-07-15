@@ -32,8 +32,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "gui",
-    "path": "folders/Объекты/gui.yy",
+    "name": "utility",
+    "path": "folders/Объекты/utility.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_camera",

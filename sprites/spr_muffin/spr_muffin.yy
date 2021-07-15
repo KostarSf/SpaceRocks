@@ -25,8 +25,8 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"901a6576-1aa5-4fd3-8f3a-969c5e1f32be","path":"sprites/spr_muffin/spr_muffin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"901a6576-1aa5-4fd3-8f3a-969c5e1f32be","path":"sprites/spr_muffin/spr_muffin.yy",},"LayerId":{"name":"8bab1bfa-affb-40b5-afb1-88a6cbf60b49","path":"sprites/spr_muffin/spr_muffin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"901a6576-1aa5-4fd3-8f3a-969c5e1f32be","path":"sprites/spr_muffin/spr_muffin.yy",},"LayerId":{"name":"b08c6dea-9e56-4033-93c7-81d3f6c86fb8","path":"sprites/spr_muffin/spr_muffin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"901a6576-1aa5-4fd3-8f3a-969c5e1f32be","path":"sprites/spr_muffin/spr_muffin.yy",},"LayerId":{"name":"8bab1bfa-affb-40b5-afb1-88a6cbf60b49","path":"sprites/spr_muffin/spr_muffin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_muffin","path":"sprites/spr_muffin/spr_muffin.yy",},"resourceVersion":"1.0","name":"901a6576-1aa5-4fd3-8f3a-969c5e1f32be","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -71,8 +71,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "game_objects",
+    "path": "folders/Спрайты/game_objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_muffin",

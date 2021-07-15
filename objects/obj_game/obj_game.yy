@@ -35,8 +35,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Объекты",
-    "path": "folders/Объекты.yy",
+    "name": "utility",
+    "path": "folders/Объекты/utility.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_game",

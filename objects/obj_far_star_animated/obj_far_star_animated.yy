@@ -33,7 +33,7 @@
     "path": "folders/Объекты/script_animations.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_far_star",
+  "name": "obj_far_star_animated",
   "tags": [],
   "resourceType": "GMObject",
 }

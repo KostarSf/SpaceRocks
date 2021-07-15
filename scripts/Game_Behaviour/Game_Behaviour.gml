@@ -38,6 +38,8 @@ function start_properties() {
 	
 	global.ship_moving_mult = 1.4;
 	global.ship_accelerating = false;
+	
+	global.item_create_chanse = 50;
 }
 
 function reset_game_timer() {

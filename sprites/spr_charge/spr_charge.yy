@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "visual",
+    "path": "folders/Спрайты/visual.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_charge",

@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Объекты",
-    "path": "folders/Объекты.yy",
+    "name": "behaviour",
+    "path": "folders/Объекты/behaviour.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_fuel_batch",

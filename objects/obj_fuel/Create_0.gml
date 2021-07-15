@@ -12,6 +12,15 @@ _rotate_speed = irandom_range(-5, 5);
 
 _under_vacuum = false;
 
+vacuum_multiply = 0;
+vacuum_multiply_increase = function() {
+	if (vacuum_multiply < 0.5) vacuum_multiply += 0.005;
+	else if (vacuum_multiply < 1) vacuum_multiply += 0.01;
+	else {
+		vacuum_multiply *= 1.05;
+	}
+}
+
 vacuum_on = function() {
 	_under_vacuum = true;
 }
