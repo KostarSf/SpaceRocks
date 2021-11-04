@@ -1,6 +1,6 @@
-if (!instance_exists(obj_ship)) {
+if (!instance_exists(obj_player)) {
 	instance_destroy();
 } else {
-	x = obj_ship.x;
-	y = obj_ship.y;
+	x = obj_player.x;
+	y = obj_player.y;
 }

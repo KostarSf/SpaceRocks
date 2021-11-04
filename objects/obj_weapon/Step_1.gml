@@ -1,0 +1,1 @@
+weapon_in_use = false;

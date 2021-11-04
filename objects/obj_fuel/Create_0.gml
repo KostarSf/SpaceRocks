@@ -17,7 +17,7 @@ vacuum_multiply_increase = function() {
 	if (vacuum_multiply < 0.5) vacuum_multiply += 0.005;
 	else if (vacuum_multiply < 1) vacuum_multiply += 0.01;
 	else {
-		vacuum_multiply *= 1.05;
+		vacuum_multiply *= 1.2;
 	}
 }
 
@@ -37,8 +37,8 @@ can_be_vacuumed = function() {
 
 reset_motion = function() {
 	_can_be_vacuumed = true;
-	image_angle = 0;
-	_rotate_speed = 0;
+	//image_angle = 0;
+	//_rotate_speed = 0;
 	speed = 0;
 }
 
@@ -50,16 +50,21 @@ picked_up = function() {
 	
 	switch (image_index) {
 		case 0:
-			fuel_add(30);
+			obj_player.fuel_add(30);
 			audio_sound_pitch(_snd, 1.2);
 			break;
 		case 1:
-			fuel_add(60);
+			obj_player.fuel_add(60);
 			audio_sound_pitch(_snd, 1);
 			break;
 		case 2: 
-			fuel_add(90);
+			obj_player.fuel_add(90);
 			audio_sound_pitch(_snd, 0.8);
 			break;
 	}
+}
+
+depending_move = function(hmove, vmove) {
+	x -= hmove;
+	y -= vmove;
 }

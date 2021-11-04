@@ -1,0 +1,1 @@
+create_particles_ext_2(x, y, 10, 0, 359, 1, 0.02, 2, 0.001);

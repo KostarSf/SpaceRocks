@@ -1,2 +1,2 @@
-/// @description center the window
+/// @description Center the game window
 window_center();

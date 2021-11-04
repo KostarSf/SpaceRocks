@@ -1,12 +1,10 @@
-var obj = undefined;
+if (is_undefined(target)
+	|| !instance_exists(target)) {
+	image_alpha = 0;
+	exit;
+} else {
+	image_alpha = 1;
 
-if (instance_exists(obj_ship_animated)) {
-	obj = obj_ship_animated;
-} else if (instance_exists(obj_ship)) {
-	obj = obj_ship;
-}
-
-if (obj != undefined) {
-	x = obj.x;
-	y = obj.y - 32;
+	x = target.x;
+	y = target.y - 32;
 }

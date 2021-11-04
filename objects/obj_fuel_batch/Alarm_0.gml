@@ -8,3 +8,8 @@ repeat (irandom_range(5, 30)) {
 	var _fuel = instance_create_layer(_x, _y, "Instances", obj_fuel);
 	_fuel.reset_motion();
 }
+
+
+if (create_pirates && irandom(4) == 0) {
+	instance_create_layer(x, y, "Instances", obj_pirate);
+}

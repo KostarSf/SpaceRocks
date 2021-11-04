@@ -1,1 +1,1 @@
-ship_parent = undefined;
+parent_ship = undefined;

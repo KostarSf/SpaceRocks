@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_fuel_batch",
+    "path": "sprites/spr_fuel_batch/spr_fuel_batch.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
