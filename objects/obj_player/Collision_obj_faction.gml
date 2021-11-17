@@ -25,6 +25,9 @@ create_particles(part_x, part_y, irandom_range(1, 3));
 add_emit_debris((astero_speed + ship_speed) * 3);
 global.camera.add_shake(1.5, 4);
 
+if (audio_is_playing(snd_scratch) == false) {
+	audio_play_sound(snd_scratch, 20, false)
+}
 
 
 if (current_stage() == stage.st2) power_use((ship_speed + astero_speed) * 3, true);

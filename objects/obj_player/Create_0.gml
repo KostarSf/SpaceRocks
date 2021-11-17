@@ -15,7 +15,7 @@ global.camera.set_target(camera_target, true);
 
 instance_create_layer(static_x, static_y, "Player", obj_fuel_vacuum);
 
-var _def_weapon = instance_create_layer(static_x, static_y, "Player", obj_weapon_default);
+var _def_weapon = instance_create_layer(static_x, static_y, "Player", obj_weapon_rocket);
 _def_weapon.parent_ship = id;
 var _def_shield = instance_create_layer(static_x, static_y, "Player", obj_weapon_shield);
 _def_shield.parent_ship = id;
@@ -242,13 +242,15 @@ lives_decrease = function() {
 	_lives--;
 	
 	if (_lives == 1) {
-		image_index = 1
+		image_index = 1;
 	}
 	
 	var expl = instance_create_layer(x, y, "Instances", obj_blow);
 	
 	if (_lives <= 0) {
 		_lives = 0;
+		
+		audio_play_sound(snd_death, 5, false); 
 		
 		cursor_sprite = -1;
 		create_particles(x, y, 20);
@@ -257,7 +259,9 @@ lives_decrease = function() {
 		alarm[2] = 3*room_speed;
 	} else {
 		expl.parent_object = id;
+		audio_play_sound(snd_hit, 5, false);
 	}
+	
 	
 	
 	

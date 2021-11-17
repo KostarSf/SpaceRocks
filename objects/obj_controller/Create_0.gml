@@ -1,5 +1,5 @@
 // Globals
-global.game_version = "v1.1.0 DEV";
+global.game_version = "v"+GM_version+" DEV";
 
 global.window_width = 640;
 global.window_height = 480;
@@ -16,6 +16,10 @@ global.mouse_moved = false;
 global.steps = 0;
 
 global.dev_gui_visible = false;
+
+global.music_current = 0;
+global.music_next = 0;
+global.music_queue = ds_list_create();
 
 enum factions {
 	none,
@@ -64,3 +68,37 @@ simple_controll_keys = function() {
 	}
 }
 
+_music_add_to_queue = function(music, _loop) {
+	ds_list_add(global.music_queue, {
+		name: music,
+		loop: _loop
+	});
+}
+
+_music_skip_current = function() {
+	audio_stop_sound(global.music_current);
+}
+
+_music_update_state = function() {
+	if (audio_is_playing(global.music_current) == false) {
+		if (global.music_next != 0) {
+			audio_play_sound(global.music_next.name, 1, global.music_next.loop);
+			global.music_current = global.music_next.name;
+			
+		} 
+		
+		if (ds_list_empty(global.music_queue) == false) {
+			global.music_next = {
+				name: global.music_queue[| 0].name,
+				loop: global.music_queue[| 0].loop
+			}
+			ds_list_delete(global.music_queue, 0);
+		} else {
+			global.music_next = 0;
+		}
+	}
+}
+
+_music_clear_queue = function() {
+	ds_list_clear(global.music_queue);
+}

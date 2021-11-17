@@ -11,6 +11,9 @@ switch (animation_type) {
 				create_first_astero();
 				room_goto(rm_stage_1);
 				play_window_transition(obj_window_fade, fadetype.fadeout, 2);
+				if (global.music_current == msc_game_theme_1_intro) {
+					music_skip_current();
+				}
 			}
 	
 		if (y > room_height + 50) {

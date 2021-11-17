@@ -125,6 +125,11 @@ _astero_destroy = function(spawn_smaller_asteros, give_goodies_to_player) {
 	create_particles(x, y, 10);
 	instance_create_layer(x, y, "Instances", obj_blow);
 	
+	if (abs(abs(x) - global.camera.get_center_x()) <= global.camera.get_width() / 2 &&
+		abs(abs(y) - global.camera.get_center_y()) <= global.camera.get_height() / 2) {
+		audio_play_sound(snd_explode, 7, false);
+	}
+	
 	instance_destroy();
 	
 	if (room == rm_stage_1) {

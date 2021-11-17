@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.3,
+  "volume": 0.49,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 5512,
@@ -10,14 +10,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_fuel.wav",
-  "duration": 0.315465,
+  "soundFile": "snd_small_hit.wav",
+  "duration": 0.091474,
   "parent": {
     "name": "Звуки",
     "path": "folders/Звуки.yy",
   },
   "resourceVersion": "1.0",
-  "name": "snd_fuel",
+  "name": "snd_small_hit",
   "tags": [],
   "resourceType": "GMSound",
 }

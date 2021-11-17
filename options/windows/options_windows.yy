@@ -1,7 +1,7 @@
 {
   "option_windows_display_name": "SpaceTail",
   "option_windows_executable_name": "spacetail.exe",
-  "option_windows_version": "1.1.0.2",
+  "option_windows_version": "0.1.0.2",
   "option_windows_company_info": "Kostar",
   "option_windows_product_info": "SpaceTail",
   "option_windows_copyright_info": "Kostar",

@@ -10,6 +10,9 @@ repeat (irandom_range(5, 15)) {
 	instance_create_layer(x, y, "Instances", obj_fuel);
 }
 
+audio_play_sound(snd_explode, 6, false);
+
+
 var _en = instance_create_layer(x, y, "Instances", obj_energy);
 _en.speed = speed;
 _en.direction = direction;

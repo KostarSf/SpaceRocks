@@ -9,6 +9,11 @@ start_button_opacity = 0;
 
 alarm[0] = 2 * room_speed;
 
+audio_play_sound(msc_menu, 10, 1);
+audio_sound_gain(msc_menu, 0, 0);
+audio_sound_gain(msc_menu, 1, 1);
+
+
 // Functions
 
 draw_app_version = function() {

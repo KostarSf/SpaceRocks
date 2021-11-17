@@ -102,6 +102,16 @@ function lin_int(val, start_1, end_1, start_2, end_2) {
 	} else {
 		return (start_2 + end_2) - (end_2 + (start_2 - end_2) * ((val - start_1) / (end_1 - start_1)));
 	}
-	
-	
+}
+
+function music_add_to_queue(music, loop) {
+	obj_controller._music_add_to_queue(music, loop);
+}
+
+function music_skip_current() {
+	obj_controller._music_skip_current();
+}
+
+function music_clear_queue() {
+	obj_controller._music_clear_queue();
 }
