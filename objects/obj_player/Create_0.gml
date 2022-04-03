@@ -15,7 +15,7 @@ global.camera.set_target(camera_target, true);
 
 instance_create_layer(static_x, static_y, "Player", obj_fuel_vacuum);
 
-var _def_weapon = instance_create_layer(static_x, static_y, "Player", obj_weapon_rocket);
+var _def_weapon = instance_create_layer(static_x, static_y, "Player", obj_weapon_default);
 _def_weapon.parent_ship = id;
 var _def_shield = instance_create_layer(static_x, static_y, "Player", obj_weapon_shield);
 _def_shield.parent_ship = id;
